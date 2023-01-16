@@ -1,0 +1,15 @@
+server:
+  port: 9091
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/usermovie
+    username: root
+    password: root
+  application:
+    name: USERMOVIE-SERVICE
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
