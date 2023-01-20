@@ -14,7 +14,7 @@ import java.util.List;
 public class MovieController {
     @GetMapping("/helloworld")
     public String Hello(){
-        return "hello world from movie";
+        return "hello world from movie controller";
     }
     @Autowired
     private MovieServiceImpl movieServiceImpl;

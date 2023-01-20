@@ -8,6 +8,7 @@ public interface MovieService {
     public Movie addMovie(Movie movie);
     public List <Movie> getAllMovies();
     public Movie getMovieById(int movieid);
+
     public void deleteMovieById(int movieid) throws Exception;
 
 }

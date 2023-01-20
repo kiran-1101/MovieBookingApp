@@ -1,6 +1,8 @@
 package com.kiran.UserMovieService.service;
 
+import com.kiran.UserMovieService.entity.Movie;
 import com.kiran.UserMovieService.entity.User;
+import com.kiran.UserMovieService.exceptions.ResourceNotFoundException;
 import com.kiran.UserMovieService.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +20,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(int userId) {
-        return userRepo.findById(userId).orElse(null);
+        User user =  userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","userId",userId));
+        return user;
     }
 
-    @Override
-    public User getUserByUserName(String userName) {
-        return null;
+    public User getUserByUserName(String userName) throws Exception {
+        User user = null;
+        try{
+            user = userRepo.findByuserName(userName);
+            if (user == null)
+            {
+                throw new ResourceNotFoundException("user","useName",userName);
+            }
+            else{
+                return userRepo.findByuserName(userName);
+            }
+        }
+        catch (ResourceNotFoundException exception){
+            throw exception;
+        }
     }
 
     @Override

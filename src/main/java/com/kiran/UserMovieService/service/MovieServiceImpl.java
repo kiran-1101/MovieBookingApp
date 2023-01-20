@@ -1,12 +1,12 @@
 package com.kiran.UserMovieService.service;
 
 import com.kiran.UserMovieService.entity.Movie;
-import com.kiran.UserMovieService.entity.User;
 import com.kiran.UserMovieService.repo.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class MovieServiceImpl implements MovieService{
     @Autowired
     private MovieRepo movieRepo;
@@ -23,6 +23,7 @@ public class MovieServiceImpl implements MovieService{
     public Movie getMovieById(int movieid) {
         return movieRepo.findById(movieid).get();
     }
+
 
     @Override
     public void deleteMovieById(int movieid) throws Exception {

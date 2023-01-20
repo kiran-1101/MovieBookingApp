@@ -25,6 +25,6 @@ public class User {
     private  String movieName;
     @Column(name= "status")
     private String status;
-    @Column(name = "movietimme")
-    private String movietime;
+    @Column(name = "movietime")
+    private int movietime;
 }

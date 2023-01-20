@@ -20,5 +20,5 @@ public class Movie {
     @Column(name = "moviename")
     private String moviename;
     @Column(name = "movietime")
-    private String movietime;
+    private int movietime;
 }
