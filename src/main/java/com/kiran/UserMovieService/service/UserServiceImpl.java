@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
          deletedUser = userRepo.findById(userId).orElse(null);
         if (deletedUser == null)
         {
-            throw new Exception("user not available ");
+            throw new Exception("user not available in database ");
         }
         else{
             userRepo.deleteById(userId);
