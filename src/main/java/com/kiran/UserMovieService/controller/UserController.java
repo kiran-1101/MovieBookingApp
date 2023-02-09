@@ -1,5 +1,6 @@
 package com.kiran.UserMovieService.controller;
 
+import com.kiran.UserMovieService.Response.UserResponse;
 import com.kiran.UserMovieService.entity.User;
 import com.kiran.UserMovieService.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,15 +27,15 @@ public class UserController {
         return new ResponseEntity<List<User>>(user, HttpStatus.OK);
     }
     @GetMapping("/id/{userid}")
-    public ResponseEntity<User> getUserByUserId(@PathVariable ("userid") int userid ){
-        User user = userServiceImpl.getUserById(userid);
-        return new ResponseEntity<User>(user,HttpStatus.OK);
+    public ResponseEntity<UserResponse> getUserByUserId(@PathVariable ("userid") int userid ){
+        UserResponse user = userServiceImpl.getUserById(userid);
+        return new ResponseEntity<UserResponse>(user,HttpStatus.OK);
     }
 
     @GetMapping("/name/{userName}")
-    public ResponseEntity<User> getUserByUserName(@PathVariable ("userName") String userName ) throws Exception {
-        User user = userServiceImpl.getUserByUserName(userName);
-        return new ResponseEntity<User>(user,HttpStatus.OK);
+    public ResponseEntity<UserResponse> getUserByUserName(@PathVariable ("userName") String userName ) throws Exception {
+        UserResponse user = userServiceImpl.getUserByUserName(userName);
+        return new ResponseEntity<UserResponse>(user,HttpStatus.OK);
     }
 
     @PostMapping("/addmovie")

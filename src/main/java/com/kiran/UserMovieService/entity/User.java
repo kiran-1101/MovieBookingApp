@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,13 +15,14 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "user_id")
+    @Column(name= "user_id",nullable = false,length = 100)
     private int userId;
-    @Column(name= "name")
+    @Column(name= "name",nullable = false, length = 15)
     private String userName;
     @Column(name= "age")
     private  String age;
     @Column(name= "mailid")
+    @Email
     private String mailId;
     @Column(name= "moviename")
     private  String movieName;

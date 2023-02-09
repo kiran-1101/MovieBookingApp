@@ -1,5 +1,6 @@
 package com.kiran.UserMovieService.service;
 
+import com.kiran.UserMovieService.Response.UserResponse;
 import com.kiran.UserMovieService.entity.Movie;
 import com.kiran.UserMovieService.entity.User;
 import com.kiran.UserMovieService.exceptions.ResourceNotFoundException;
@@ -19,21 +20,38 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(int userId) {
+    public UserResponse getUserById(int userId) {
         User user =  userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","userId",userId));
-        return user;
+        UserResponse userResponse = new UserResponse();
+        userResponse.setUserName(user.getUserName());
+        userResponse.setAge(user.getAge());
+        userResponse.setStatus(user.getStatus());
+        userResponse.setMovietime(user.getMovietime());
+        userResponse.setMailId(user.getMailId());
+        userResponse.setMovieName(user.getMovieName());
+        userResponse.setUserId(user.getUserId());
+        return userResponse;
     }
 
-    public User getUserByUserName(String userName) throws Exception {
+    public UserResponse getUserByUserName(String userName) throws Exception {
         User user = null;
+        UserResponse userResponse = new UserResponse();
         try{
-            user = userRepo.findByuserName(userName);
+             user = userRepo.findByuserName(userName);
             if (user == null)
             {
                 throw new ResourceNotFoundException("user","useName",userName);
             }
             else{
-                return userRepo.findByuserName(userName);
+
+                userResponse.setUserName(user.getUserName());
+                userResponse.setAge(user.getAge());
+                userResponse.setStatus(user.getStatus());
+                userResponse.setMovietime(user.getMovietime());
+                userResponse.setMailId(user.getMailId());
+                userResponse.setMovieName(user.getMovieName());
+                userResponse.setUserId(user.getUserId());
+                return userResponse;
             }
         }
         catch (ResourceNotFoundException exception){
